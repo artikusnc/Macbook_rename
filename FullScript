@@ -65,10 +65,10 @@ else
 cd /tmp
 curl -L -o /tmp/Sentinel-23-2-2-6951.pkg curl -L "https://drive.usercontent.google.com/download?id=1S6hd2SvU3SZLT9c4lOxQvrf32kBfSWRX&confirm=xxx" -o Sentinel-23-2-2-6951.pkg
 
-sudo echo > /tmp/com.sentinelone.registration-token "eyJ1cmwiOiAiaHR0cHM6Ly9ldWNlMS0xMDQuc2VudGluZWxvbmUubmV0IiwgInNpdGVfa2V5IjogImFiYzhmNDA5YzljNDczYTkifQ=="
+sudo echo > /tmp/com.sentinelone.registration-token "xxx=="
 sudo /usr/sbin/installer -pkg /tmp/Sentinel-23-2-2-6951.pkg -target /
 sleep 3 
-sudo /usr/local/bin/sentinelctl set registration-token -- "eyJ1cmwiOiAiaHR0cHM6Ly9ldWNlMS0xMDQuc2VudGluZWxvbmUubmV0IiwgInNpdGVfa2V5IjogImFiYzhmNDA5YzljNDczYTkifQ=="
+sudo /usr/local/bin/sentinelctl set registration-token -- "xxx=="
 fi
 
 sudo echo > /Library/Logs/sentinelone-install-log.txt 'Sentinelone Agent has been installed successful'
