@@ -1,0 +1,18 @@
+#Make temp folder for downloads.
+mkdir "/tmp/office/";
+cd "/tmp/office/";
+
+#Download Word, PowerPoint and Excel into temp folder.
+curl -L -o /tmp/office/word.pkg "https://go.microsoft.com/fwlink/?linkid=525134";
+curl -L -o /tmp/office/powerpoint.pkg "https://go.microsoft.com/fwlink/?linkid=525136";
+curl -L -o /tmp/office/excel.pkg "https://go.microsoft.com/fwlink/?linkid=525135";
+#curl -L -o /tmp/office/office.pkg "https://go.microsoft.com/fwlink/?linkid=525133";
+
+#Silent Install each application.
+sudo -S installer -allowUntrusted -pkg "/tmp/office/word.pkg" -target /;
+sudo -S installer -allowUntrusted -pkg "/tmp/office/powerpoint.pkg" -target /;
+sudo -S installer -allowUntrusted -pkg "/tmp/office/excel.pkg" -target /;
+#sudo -S installer -allowUntrusted -pkg "/tmp/office/office.pkg" -target /;
+
+#Remove Temp Files
+sudo rm -rf "/tmp/office/";
