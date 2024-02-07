@@ -1,0 +1,28 @@
+######### STEP 3
+######################### RENAME MACBOOK ########################
+
+curl -L -o /tmp/hostcount.txt "https://drive.google.com/uc?export=download&id=1U99kG5YC2M0uJ7GvctA3-bNDaOrpIbt8"
+
+hostnameprefix='OF-CLIENT'
+read hostnumberc < /tmp/hostcount.txt 
+
+#################update the hostname##########################
+
+hostnumberu=$((hostnumberc+1))
+hostname=$hostnameprefix-$hostnumberu
+
+	#################update the host number to file###############
+echo $hostnumberu > /tmp/hostcount.txt
+
+	#################set new hostname#############################
+
+echo Start1234! | sudo -S scutil --set HostName $hostname
+echo Start1234! | sudo -S scutil --set LocalHostName $hostname
+echo Start1234! | sudo -S scutil --set ComputerName $hostname
+
+########################searching for values of variables###############
+
+ram=$(system_profiler SPHardwareDataType | grep Memory | awk 'NR==1{print $2}')
+model=$(system_profiler SPHardwareDataType | grep "Model Identifier" | awk 'NR==1{print $3}')
+creatime=$(date)
+softversn=$(system_profiler SPSoftwareDataType | grep "System Version" | awk 'NR==1{print $4}')
