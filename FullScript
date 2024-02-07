@@ -1,53 +1,53 @@
-Sleep 60
+#Sleep 60
 #!/bin/bash
-
-Sleep 5
-
+#
+#Sleep 5
+#
 ######### STEP 2
 ###################### Create a folder and mount the drive ###############################
-mkdir -p /Users/admin/mountpoint/ 
-
-if mount | grep "@10.100.10.10" > /dev/null; then
-    echo "All right"
-else
-    mount -t afp afp://Onefootball:Start1234@10.100.10.10/Storage /Users/admin/mountpoint
-fi
-
-Sleep 12
-
+#mkdir -p /Users/admin/mountpoint/ 
+#
+#if mount | grep "@10.100.10.10" > /dev/null; then
+#    echo "All right"
+#else
+#    mount -t afp afp://Onefootball:Start1234@10.100.10.10/Storage #/Users/admin/mountpoint
+#fi
+#
+#Sleep 12
+#
 ######### STEP 3
 ######################### RENAME MACBOOK ########################
-
-hostnameprefix='OF-CLIENT'
-read hostnumberc < /Users/admin/mountpoint/IT\ Folder/scripts/hostcount.txt
-
-	#################update the hostname##########################
-
-hostnumberu=$((hostnumberc+1))
-hostname=$hostnameprefix-$hostnumberu
-
-	#################update the host number to file###############
-echo $hostnumberu > /Users/admin/mountpoint/IT\ Folder/scripts/hostcount.txt
-
-	#################set new hostname#############################
-
-echo Start1234! | sudo -S scutil --set HostName $hostname
-echo Start1234! | sudo -S scutil --set LocalHostName $hostname
-echo Start1234! | sudo -S scutil --set ComputerName $hostname
-
-########################searching for values of variables###############
-
-ram=$(system_profiler SPHardwareDataType | grep Memory | awk 'NR==1{print $2}')
-model=$(system_profiler SPHardwareDataType | grep "Model Identifier" | awk 'NR==1{print $3}')
-creatime=$(date)
-softversn=$(system_profiler SPSoftwareDataType | grep "System Version" | awk 'NR==1{print $4}')
-
-#########################logging in csv###############################
-
-echo $hostname, $model, $creatime, $softversn, $ram >> /Users/admin/mountpoint/IT\ Folder/scripts/host_details.csv
-
-Sleep 5
-
+#
+#hostnameprefix='OF-CLIENT'
+#read hostnumberc < /Users/admin/mountpoint/IT\ #Folder/scripts/hostcount.txt
+#
+#	#################update the hostname##########################
+#
+#hostnumberu=$((hostnumberc+1))
+#hostname=$hostnameprefix-$hostnumberu
+#
+#	#################update the host number to file###############
+#echo $hostnumberu > /Users/admin/mountpoint/IT\ #Folder/scripts/hostcount.txt
+#
+#	#################set new hostname#############################
+#
+#echo Start1234! | sudo -S scutil --set HostName $hostname
+#echo Start1234! | sudo -S scutil --set LocalHostName $hostname
+#echo Start1234! | sudo -S scutil --set ComputerName $hostname
+#
+#########################searching for values of #variables###############
+#
+#ram=$(system_profiler SPHardwareDataType | grep Memory | awk #'NR==1{print $2}')
+#model=$(system_profiler SPHardwareDataType | grep "Model Identifier" #| awk 'NR==1{print $3}')
+#creatime=$(date)
+#softversn=$(system_profiler SPSoftwareDataType | grep "System #Version" | awk 'NR==1{print $4}')
+#
+##########################logging in #csv###############################
+#
+#echo $hostname, $model, $creatime, $softversn, $ram >> #/Users/admin/mountpoint/IT\ Folder/scripts/host_details.csv
+#
+#Sleep 5
+#
 ######### STEP 4
 ######### SENTINELONE INSTALLER
 #!/bin/bash
@@ -65,10 +65,10 @@ else
 cd /tmp
 curl -L -o /tmp/Sentinel-23-2-2-6951.pkg curl -L "https://drive.usercontent.google.com/download?id=1S6hd2SvU3SZLT9c4lOxQvrf32kBfSWRX&confirm=xxx" -o Sentinel-23-2-2-6951.pkg
 
-sudo echo > /tmp/com.sentinelone.registration-token "xxx=="
+sudo echo > /tmp/com.sentinelone.registration-token "eyJ1cmwiOiAiaHR0cHM6Ly9ldWNlMS0xMDQuc2VudGluZWxvbmUubmV0IiwgInNpdGVfa2V5IjogImFiYzhmNDA5YzljNDczYTkifQ=="
 sudo /usr/sbin/installer -pkg /tmp/Sentinel-23-2-2-6951.pkg -target /
 sleep 3 
-sudo /usr/local/bin/sentinelctl set registration-token -- "xxx=="
+sudo /usr/local/bin/sentinelctl set registration-token -- "eyJ1cmwiOiAiaHR0cHM6Ly9ldWNlMS0xMDQuc2VudGluZWxvbmUubmV0IiwgInNpdGVfa2V5IjogImFiYzhmNDA5YzljNDczYTkifQ=="
 fi
 
 sudo echo > /Library/Logs/sentinelone-install-log.txt 'Sentinelone Agent has been installed successful'
@@ -149,14 +149,14 @@ Sleep 5
 
 ######### STEP 7
 ######### PRINTERS INSTALLATIONS
-
-/usr/bin/osascript -e 'mount volume "smb://printer:WACT&7$3312%@10.100.10.10/Storage/Printers"'
-lpadmin -p "1st_floor_Newsroom" -E -v lpd://10.100.30.37/ -P /Volumes/Printers/CNADVC257X1.PPD -D "1st Floor"
-lpadmin -p "2nd_floor_Marketing" -E -v lpd://10.100.30.34/ -P /Volumes/Printers/CNADVC250X1.PPD -D "2nd Floor"
-end
-lpadmin -p "3rd_floor_arena_side" -E -v lpd://10.100.30.32/ -P /Volumes/Printers/CNADVC257X1.PPD -D "3rd Floor Arena Side"
-end
-lpadmin -p "3rd_floor_Kitchen_side" -E -v lpd://10.100.30.36/ -P /Volumes/Printers/CNADVC3826X1.PPD -D "3rd Floor Kitchen Side"
-end
-lpadmin -p "Ground_Floor" -E -v lpd://10.100.30.38/ -P /Volumes/Printers/CNADVC256IIIX1.PPD -D "Ground Floor"
-end
+#
+#/usr/bin/osascript -e 'mount volume #"smb://printer:WACT&7$3312%@10.100.10.10/Storage/Printers"'
+#lpadmin -p "1st_floor_Newsroom" -E -v lpd://10.100.30.37/ -P #/Volumes/Printers/CNADVC257X1.PPD -D "1st Floor"
+#lpadmin -p "2nd_floor_Marketing" -E -v lpd://10.100.30.34/ -P #/Volumes/Printers/CNADVC250X1.PPD -D "2nd Floor"
+#end
+#lpadmin -p "3rd_floor_arena_side" -E -v lpd://10.100.30.32/ -P #/Volumes/Printers/CNADVC257X1.PPD -D "3rd Floor Arena Side"
+#end
+#lpadmin -p "3rd_floor_Kitchen_side" -E -v lpd://10.100.30.36/ -P #/Volumes/Printers/CNADVC3826X1.PPD -D "3rd Floor Kitchen Side"
+#end
+#lpadmin -p "Ground_Floor" -E -v lpd://10.100.30.38/ -P #/Volumes/Printers/CNADVC256IIIX1.PPD -D "Ground Floor"
+#end
